@@ -1,8 +1,14 @@
-
-~*
+# common
 *~
 
-# project-specific
+# OS and editors
+.DS_Store
+._*
+thumbs.db
+
+# project specific
+~*
+.cmd
 demo/tmp
 
 # npm
