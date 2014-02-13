@@ -24,7 +24,7 @@
 });
 
 .md.class(text-glow .33s linear forwards, {
-    to {text-shadow: 0 0 .44em fade(#fff, 66%);}
+    to {text-shadow: 0 0 .55em fade(#fff, 77%);}
 });
 
 .md.class(color-spin 5.5s linear alternate infinite, {
@@ -34,12 +34,94 @@
 });
 
 // ............................................................
-// 2D Transforms
+// Border Transitions
 
-.begin-effects-group(2, "2D Transforms");
+.begin-effects-group(2, "Border Transitions");
+
+.border-fade   {.md.transition(box-shadow .33s, inset 0 0 0 .2em fade(#000, 25%))}
+.hollow        {.md.transition(background .33s; fade(#f0ad4e, 66%))} // fixme
+.round-corners {.md.transition(border-radius .55s; 50%)}
+
+// todo:
+.outline-outward {
+    .using-before();
+    &:hover:before {.move(-.5em)}
+    &:before {
+        .move(-1px);
+        transition-duration: .33s;
+        transition-property: top, right, bottom, left;
+        border: fade(#000, 20%) solid .2em;
+        border-radius: inherit;
+    }
+}
+
+// ............................................................
+// Shadow Transitions
+
+.begin-effects-group(3, "Shadow Transitions");
+
+.glow          {.md.transition(box-shadow .33s, 0 0 .55em fade(#000, 55%))}
+.shadow-outset {.md.transition(box-shadow .33s, .13em .13em .13em fade(#000, 44%))}
+.shadow-inset  {.md.transition(box-shadow .33s, inset .13em .13em .13em fade(#000, 44%))}
+
+// ............................................................
+// Bubbles
+
+.begin-effects-group(4, "Bubbles");
 
 & {
-    #config {
+    @size: .55em;
+
+    .bubble-top    {.bubble(top)}
+    .bubble-right  {.bubble(right)}
+    .bubble-bottom {.bubble(bottom)}
+    .bubble-left   {.bubble(left)}
+    
+    .bubble-float-top {
+        .bubble(top);
+        .md.transition(transform .44s, translateY((@size / +2)))
+    }
+
+    .bubble-float-right {
+        .bubble(right);
+        .md.transition(transform .44s, translateX((@size / -2)))
+    }
+
+    .bubble-float-bottom {
+        .bubble(bottom);
+        .md.transition(transform .44s, translateY((@size / -2)))
+    }
+
+    .bubble-float-left {
+        .bubble(left);
+        .md.transition(transform .44s, translateX((@size / +2)))
+    }
+
+    .bubble(@side) {
+        .using-before();
+        &:hover:before {@{side}: -@size}
+        &:before {
+            z-index: -1;
+            transition: @side .44s;
+            @{side}: 0;
+            border: @size solid transparent;
+            border-@{side}-width: 0;
+            .-(@side);
+            .-(top)    {left: calc(50% - @size); border-bottom-color: inherit};
+            .-(right)  {top:  calc(50% - @size); border-left-color:   inherit};
+            .-(bottom) {left: calc(50% - @size); border-top-color:    inherit};
+            .-(left)   {top:  calc(50% - @size); border-right-color:  inherit};
+        }
+    }
+}
+
+// ............................................................
+// 2D Transforms
+
+.begin-effects-group(5, "2D Transforms");
+
+& {
+    #config { // fixme
         .default-style() {
             transform: translateZ(0);
             box-shadow: 0 0 1px fade(red, 0);
@@ -120,88 +202,6 @@
             rotate    deg; +2 -2 +2 -2 +1 -1 +1 -1  0  0;
         );
     });
-}
-
-// ............................................................
-// Border Transitions
-
-.begin-effects-group(3, "Border Transitions");
-
-.border-fade   {.md.transition(box-shadow .33s, inset 0 0 0 .2em fade(#000, 25%))}
-.hollow        {.md.transition(background .33s; fade(#f0ad4e, 66%))} // fixme
-.round-corners {.md.transition(border-radius .55s; 50%)}
-
-// todo:
-.outline-outward {
-    .using-before();
-    &:hover:before {.move(-.5em)}
-    &:before {
-        .move(-1px);
-        transition-duration: .33s;
-        transition-property: top, right, bottom, left;
-        border: fade(#000, 20%) solid .2em;
-        border-radius: inherit;
-    }
-}
-
-// ............................................................
-// Shadow Transitions
-
-.begin-effects-group(4, "Shadow Transitions");
-
-.glow          {.md.transition(box-shadow .33s, 0 0 .55em fade(#000, 55%))}
-.shadow-outset {.md.transition(box-shadow .33s, .13em .13em .13em fade(#000, 44%))}
-.shadow-inset  {.md.transition(box-shadow .33s, inset .13em .13em .13em fade(#000, 44%))}
-
-// ............................................................
-// Bubbles
-
-.begin-effects-group(5, "Bubbles");
-
-& {
-    @size: .55em;
-
-    .bubble-top    {.bubble(top)}
-    .bubble-right  {.bubble(right)}
-    .bubble-bottom {.bubble(bottom)}
-    .bubble-left   {.bubble(left)}
-    
-    .bubble-float-top {
-        .bubble(top);
-        .md.transition(transform .44s, translateY((@size / +2)))
-    }
-
-    .bubble-float-right {
-        .bubble(right);
-        .md.transition(transform .44s, translateX((@size / -2)))
-    }
-
-    .bubble-float-bottom {
-        .bubble(bottom);
-        .md.transition(transform .44s, translateY((@size / -2)))
-    }
-
-    .bubble-float-left {
-        .bubble(left);
-        .md.transition(transform .44s, translateX((@size / +2)))
-    }
-
-    .bubble(@side) {
-        .using-before();
-        &:hover:before {@{side}: -@size}
-        &:before {
-            z-index: -1;
-            transition: @side .44s;
-            @{side}: 0;
-            border: @size solid transparent;
-            border-@{side}-width: 0;
-            .-(@side);
-            .-(top)    {left: calc(50% - @size); border-bottom-color: inherit};
-            .-(right)  {top:  calc(50% - @size); border-left-color:   inherit};
-            .-(bottom) {left: calc(50% - @size); border-top-color:    inherit};
-            .-(left)   {top:  calc(50% - @size); border-right-color:  inherit};
-        }
-    }
 }
 
 // ............................................................
