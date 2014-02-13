@@ -1,0 +1,58 @@
+
+// ............................................................
+// default config:
+
+#config {
+    @animated-state: ~'';
+    .default-animated-style() {}
+    .default-style() {}
+}
+
+// ............................................................
+
+.md() {
+    
+// have to put these into parametric namespace here (to make
+// config mixins and variables to be customizible via scope, see #1316)
+
+    .animation(@parameters, @frames) {
+        .md.evalArgsAndConfig_();
+        @keyframes @name {@frames();}
+        .default-style();
+       &@{animated-state} {
+            animation: @parameters;
+           .default-animated-style();
+        }
+    }
+    
+    .transition(@parameters, @value) {
+       .md.evalArgsAndConfig_();
+       .default-style();
+        transition: @parameters;
+       &@{animated-state} {
+            .default-animated-style();
+            @property: extract(@parameters, 1);
+            @{property}: @value;
+
+        }
+    }
+
+    .class(@parameters, @frames, @style) {
+        .md.evalArgsAndConfig_();
+        .@{name} {
+            .md.animation(@parameters, @frames);
+            @style();
+        }
+    }
+
+    .class(@parameters, @frames) {
+       .md.class(@parameters, @frames, {})
+    }
+
+    .evalArgsAndConfig_() {
+        @name: extract(@parameters, 1);
+        #config();
+        // @state: @animated-state;
+    }
+
+} // ~.md

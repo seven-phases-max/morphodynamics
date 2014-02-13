@@ -1,0 +1,107 @@
+
+@import "../../src/morphodynamics.less";
+
+// ............................................................
+// config:
+
+#config {
+    @animated-state: ~':hover';
+    .default-style() {
+        // color: red;
+    }
+}
+
+// ............................................................
+
+& {
+    #config {
+        .default-style() {
+            transform: translateZ(0);
+            // color: green;
+        }
+    }
+
+    .grow   {.md.transition(transform .33s, scale(1.1))}
+    .shrink {.md.transition(transform .33s, scale(0.9))}
+    
+    .md.class(pulse 1.1s linear infinite, {
+        25% {transform: scale(0.9)}
+        75% {transform: scale(1.1)}
+    });
+
+    .md.class(pulse-grow .33s linear infinite alternate, {
+        to  {transform: scale(1.1)}
+    });
+    
+    .md.class(pulse-shrink .33s linear infinite alternate, {
+        to  {transform: scale(0.9)}
+    });
+
+    .md.class(push .33s linear, {
+        50% {transform: scale(0.8)}
+    });
+
+    .md.class(pop .33s linear, {
+        50% {transform: scale(1.2)}
+    });
+    
+    .rotate        {.md.transition(transform .33s, rotate(5deg))}
+    .grow-rotate   {.md.transition(transform .33s, scale(1.1) rotate(5deg))}
+    
+    .float         {.md.transition(transform .33s, translateY(-.5em))}
+    .sink          {.md.transition(transform .33s, translateY(+.5em))}
+    
+    .skew          {.md.transition(transform .33s, skew(-11deg))}
+    .skew-forward  {.md.transition(transform .33s, skew(-11deg)); transform-origin: 0 100%;}
+    .skew-backward {.md.transition(transform .33s, skew(+11deg)); transform-origin: 0 100%;}
+
+    .md.class(wobble-horizontal 1.1s ease-in-out, {
+        .frame-sequence(transform, 
+            translate px, +8 -6 +4 -2 +1 0);
+    });
+    
+    .md.class(wobble-vertical 1.1s ease-in-out, {
+        .frame-sequence(transform, 
+            translateY px, +8 -6 +4 -2 +1 0);
+    });
+    
+    .md.class(wobble-bottom-right 1.1s ease-in-out, {
+        .frame-sequence(transform; 
+            translate px; +8 +8, -6 -6, +4 +4, -2 -2, +1 +1, 0 0);
+    });
+    
+    .md.class(wobble-top-right 1.1s ease-in-out, {
+        .frame-sequence(transform; 
+            translate px; +8 -8, -6 +6, +4 -4, -2 +2, +1 -1, 0 0);
+    });
+
+    .wobble-scew-top    {.wobble-scew(); transform-origin: 0 100%;}
+    .wobble-scew-bottom {.wobble-scew(); transform-origin: 100% 0;}
+
+    .md.class(wobble-scew 1.1s ease-in-out, {
+        .frame-sequence(transform, 
+            skew deg, -12 +10 -6 +4 -2 0);
+    });
+    
+    .md.class(buzz .15s linear infinite, {
+        50% {transform: translateX(+3px) rotate(+2deg);}
+       100% {transform: translateX(-3px) rotate(-2deg);}
+    });
+
+    .md.class(buzz-out .77s linear, {
+        .frame-sequence(transform;
+            translateX px; +3 -3 +3 -3 +2 -2 +2 -2 +1 -1;
+            rotate    deg; +2 -2 +2 -2 +1 -1 +1 -1  0  0;
+        );
+    });
+}
+
+// ............................................................
+
+.md.class(text-blur .66s forwards, {
+    0% {text-shadow: 0 0 0 transparent}
+    to {
+        text-shadow: 0 0 .66em white;
+        color: transparent;
+    }
+});

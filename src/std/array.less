@@ -1,0 +1,18 @@
+
+// ............................................................
+// .join
+
+.join(@array, @delim: ~' ', @postfix: ~'') {
+    @n: length(@array);
+    .-(1, ~'');
+    .-(@i, @r) when (@i < @n) {
+        @v: extract(@array, @i);
+        .-((@i + 1), ~'@{r}@{v}@{postfix}@{delim}');
+    }
+    .-(@i, @r) when (@i = @n) {
+        @v: extract(@array, @i);
+        @-: ~'@{r}@{v}@{postfix}';
+    }
+    
+    @join: @-;
+}

@@ -1,0 +1,32 @@
+
+@import "../std/for";
+@import "../std/array";
+
+// ............................................................
+
+.frame-sequence(transform, @seq...) {
+    @nFuncs: (length(@seq) / 2);
+    @nFrames: length(extract(@seq, 2));
+
+    .for(@nFrames); .-each(@i) {
+        @name: unit(round((100 * @i / @nFrames)), ~'%');
+        @{name} {
+            .for(0, (@nFuncs - 1)); .-each(@j) {
+                .getFuncArgs_(extract(@seq, (1 + @j * 2)));
+                @funcValues:  extract(@seq, (2 + @j * 2));
+                @frameValues: extract(@funcValues, @i);
+                transform+_: ~'@{func}(@{-})';
+                    .join(@frameValues, ', ', @unit);
+            }
+        }
+    }
+
+    .getFuncArgs_(@array)  {
+        @func: extract(@array, 1);
+        @unit: ;
+    }
+
+    .getFuncArgs_(@array) when (length(@array) > 1) {
+        @unit: extract(@array, 2);
+    }
+}
