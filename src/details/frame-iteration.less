@@ -1,0 +1,10 @@
+
+@import "../std/for";
+
+.frame-iteration(@n) {
+    .for(@n); .-each(@i) {
+        @advance: (@i / @n);
+        @name: unit(round((@advance * 100)), ~'%');
+        @{name} {.-(@advance)}
+    }
+}

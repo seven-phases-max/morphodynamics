@@ -12,11 +12,37 @@
 }
 
 // ............................................................
+// Miscellaneous
+
+.begin-effects-group(1, "Miscellaneous");
+
+.md.class(text-blur .66s forwards, {
+    to {
+        color: transparent;
+        text-shadow: 0 0 .66em white;
+    }
+});
+
+.md.class(text-glow .33s linear forwards, {
+    to {text-shadow: 0 0 .44em fade(#fff, 66%);}
+});
+
+.md.class(color-spin 5.5s linear alternate infinite, {
+    .frame-iteration(7); .-(@advance) {
+        background-color: spin(#6C9, (360 * @advance));
+    }
+});
+
+// ............................................................
+// 2D Transforms
+
+.begin-effects-group(2, "2D Transforms");
 
 & {
     #config {
         .default-style() {
             transform: translateZ(0);
+            box-shadow: 0 0 1px fade(red, 0);
             // color: green;
         }
     }
@@ -69,7 +95,7 @@
         .frame-sequence(transform; 
             translate px; +8 +8, -6 -6, +4 +4, -2 -2, +1 +1, 0 0);
     });
-    
+
     .md.class(wobble-top-right 1.1s ease-in-out, {
         .frame-sequence(transform; 
             translate px; +8 -8, -6 +6, +4 -4, -2 +2, +1 -1, 0 0);
@@ -97,11 +123,108 @@
 }
 
 // ............................................................
+// Border Transitions
 
-.md.class(text-blur .66s forwards, {
-    0% {text-shadow: 0 0 0 transparent}
-    to {
-        text-shadow: 0 0 .66em white;
-        color: transparent;
+.begin-effects-group(3, "Border Transitions");
+
+.border-fade   {.md.transition(box-shadow .33s, inset 0 0 0 .2em fade(#000, 25%))}
+.hollow        {.md.transition(background .33s; fade(#f0ad4e, 66%))} // fixme
+.round-corners {.md.transition(border-radius .55s; 50%)}
+
+// todo:
+.outline-outward {
+    .using-before();
+    &:hover:before {.move(-.5em)}
+    &:before {
+        .move(-1px);
+        transition-duration: .33s;
+        transition-property: top, right, bottom, left;
+        border: fade(#000, 20%) solid .2em;
+        border-radius: inherit;
     }
-});
+}
+
+// ............................................................
+// Shadow Transitions
+
+.begin-effects-group(4, "Shadow Transitions");
+
+.glow          {.md.transition(box-shadow .33s, 0 0 .55em fade(#000, 55%))}
+.shadow-outset {.md.transition(box-shadow .33s, .13em .13em .13em fade(#000, 44%))}
+.shadow-inset  {.md.transition(box-shadow .33s, inset .13em .13em .13em fade(#000, 44%))}
+
+// ............................................................
+// Bubbles
+
+.begin-effects-group(5, "Bubbles");
+
+& {
+    @size: .55em;
+
+    .bubble-top    {.bubble(top)}
+    .bubble-right  {.bubble(right)}
+    .bubble-bottom {.bubble(bottom)}
+    .bubble-left   {.bubble(left)}
+    
+    .bubble-float-top {
+        .bubble(top);
+        .md.transition(transform .44s, translateY((@size / +2)))
+    }
+
+    .bubble-float-right {
+        .bubble(right);
+        .md.transition(transform .44s, translateX((@size / -2)))
+    }
+
+    .bubble-float-bottom {
+        .bubble(bottom);
+        .md.transition(transform .44s, translateY((@size / -2)))
+    }
+
+    .bubble-float-left {
+        .bubble(left);
+        .md.transition(transform .44s, translateX((@size / +2)))
+    }
+
+    .bubble(@side) {
+        .using-before();
+        &:hover:before {@{side}: -@size}
+        &:before {
+            z-index: -1;
+            transition: @side .44s;
+            @{side}: 0;
+            border: @size solid transparent;
+            border-@{side}-width: 0;
+            .-(@side);
+            .-(top)    {left: calc(50% - @size); border-bottom-color: inherit};
+            .-(right)  {top:  calc(50% - @size); border-left-color:   inherit};
+            .-(bottom) {left: calc(50% - @size); border-top-color:    inherit};
+            .-(left)   {top:  calc(50% - @size); border-right-color:  inherit};
+        }
+    }
+}
+
+// ............................................................
+// some utility mixins:
+
+.begin-effects-group(@i, @title) {
+    .md-group-@{i}:hover {
+        content: @title;
+    }
+}
+
+.using-before() {
+    position: relative;
+    &:before{
+        pointer-events: none;
+        position: absolute;
+        content: '';
+    }
+}
+
+.move(@p) {
+    top:    @p;
+    right:  @p;
+    bottom: @p;
+    left:   @p;
+}
