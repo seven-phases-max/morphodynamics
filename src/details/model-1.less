@@ -1,4 +1,6 @@
 
+@import "../std/for";
+
 // ............................................................
 // default config:
 
@@ -26,14 +28,21 @@
         }
     }
     
-    .transition(@parameters, @value) {
+    .transition(@parameters, @value, ...) {
        .md.evalArgsAndConfig_();
        .default-style();
-        transition: @parameters;
+        transition+: @parameters;
        &@{animated-state} {
             .default-animated-style();
             @property: extract(@parameters, 1);
             @{property}: @value;
+        }
+    }
+
+    .transition(@parameters, @value, @tail...) when (length(@tail) > 1) {
+        // todo: put assertion for even tail length
+        .for(0, (length(@tail) / 2 - 1)); .-each(@i) {
+            .md.transition(extract(@tail, (@i * 2 + 1)), extract(@tail, (@i * 2 + 2)));
         }
     }
 
