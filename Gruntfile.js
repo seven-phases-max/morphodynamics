@@ -6,15 +6,39 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         less: {
+            options: {
+                strictMath: true
+                // cleancss: true
+            },
             build: {
-                options: {
-                    strictMath: true
-                },
-                expand:  true,
-                flatten: true,
-                src:    'demo/less/*.less',
-                dest:   'demo/tmp/',
-                ext:    '.css'
+                expand:   true,
+                flatten:  true,
+                src:     'demo/less/*.less',
+                dest:    'demo/tmp/',
+                ext:     '.css'
+            }
+        },
+        cssmin: {
+            options: {
+                keepSpecialComments: 1,
+                noRebase: true
+            },
+            build: {
+                expand:   true,
+                flatten:  true,
+                src:     'demo/tmp/*.css',
+                dest:    'demo/tmp/'
+            }
+        },
+        csscomb: {
+            options: {
+                config:  'build/csscomb.json'
+            },
+            build: {
+                expand:   true,
+                flatten:  true,
+                src:     'demo/tmp/*.css',
+                dest:    'demo/tmp/'
             }
         },
         autoprefixer: {
@@ -22,10 +46,10 @@ module.exports = function (grunt) {
                 // browsers: ['> 1%', 'last 2 versions', 'ff 17', 'opera 12.1']
             },
             build: {
-                expand:  true,
-                flatten: true,
-                src:    'demo/tmp/*.css',
-                dest:   'demo/css/'
+                expand:   true,
+                flatten:  true,
+                src:     'demo/tmp/*.css',
+                dest:    'demo/css/'
             },
         },
         watch: {
@@ -62,6 +86,8 @@ module.exports = function (grunt) {
     
     grunt.registerTask('build', [
         'less:build',
+        'cssmin:build',
+        'csscomb:build',
         'autoprefixer:build'
     ]);
     

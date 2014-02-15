@@ -18,17 +18,19 @@
 // config mixins and variables to be customizible via scope, see #1316,
 // the whole config thing is still broken though because of #1291)
 
-    .animation(@parameters, @frames) {
+    .animation(@parameters, @frames, @style: none) {
         .md.evalArgsAndConfig_();
         @keyframes @name {@frames();}
         .default-style();
        &@{animated-state} {
-            animation: @parameters;
            .default-animated-style();
+           animation: @parameters;
+           @style();
         }
     }
     
     .transition(@parameters, @value, ...) {
+        @style: {}; // fixme, unused
        .md.evalArgsAndConfig_();
        .default-style();
         transition+: @parameters;
@@ -46,7 +48,7 @@
         }
     }
 
-    .class(@parameters, @frames, @style) {
+    .class(@parameters, @frames, @style: none, @animated-style: none) {
         .md.evalArgsAndConfig_();
         .@{name} {
             .md.animation(@parameters, @frames);
@@ -54,12 +56,13 @@
         }
     }
 
-    .class(@parameters, @frames) {
-       .md.class(@parameters, @frames, {})
-    }
+    //.class(@parameters, @frames) {
+    //   .md.class(@parameters, @frames, {})
+    //}
 
     .evalArgsAndConfig_() {
         @name: extract(@parameters, 1);
+        .-() when (@style = none) {@style: {}} .-;
         #config();
         // @state: @animated-state;
     }

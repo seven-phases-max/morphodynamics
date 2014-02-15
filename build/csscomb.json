@@ -1,0 +1,9 @@
+{
+    "block-indent": 4,
+    "colon-space": ["", " "],
+    "combinator-space": [" ", " "],
+    "quotes": "double",
+    "rule-indent": 4,
+    "stick-brace": " ",
+    "unitless-zero": true
+}
