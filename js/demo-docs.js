@@ -30,7 +30,7 @@ function main() {
         prevSelector = selector;
         if (!selector.search("md-group")) {
             header.clone().appendTo(container)
-                .text(rules[i].style.getPropertyValue('content').replace(/'/g, ""));
+                .text(rules[i].style.getPropertyValue('content').replace(/['"]/g, ''));
             j = (j + 1) % groupClass.length;
         } else {
             button.clone().appendTo(container)
