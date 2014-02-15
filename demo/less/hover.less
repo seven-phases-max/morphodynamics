@@ -16,22 +16,13 @@
 
 .begin-effects-group(0, "Background");
 
-.lighten {
-    .before-overlay(-1px);
-    &:hover:before {background-color: fade(#fff, 33%)}
-    &:before {
-        transition: background .33s linear;
-        border-radius: inherit;
-    }
-}
+.lighten {.shadow-overlay(#fff, 33%)}
+.darken  {.shadow-overlay(#000, 16%)}
 
-.darken {
-    .before-overlay(-1px);
-    &:hover:before {background-color: fade(#000, 16%)}
-    &:before {
-        transition: background .33s linear;
-        border-radius: inherit;
-    }
+.shadow-overlay(@color, @alpha) {
+    @value: inset 0 0 .5em 2.5em;
+    box-shadow: @value fade(@color, 0);
+    .md.transition(box-shadow .66s, @value  fade(@color, @alpha));
 }
 
 .barberpole {
@@ -61,13 +52,27 @@
 .md.class(text-blur .66s forwards, {
     to {
         color: transparent;
-        text-shadow: 0 0 .66em white;
+        text-shadow: 0 0 .66em #fff;
     }
 });
 
-.md.class(text-glow .33s linear forwards, {
-    to {text-shadow: 0 0 .55em fade(#fff, 77%);}
-});
+.text-glow {.md.transition(text-shadow .33s, 0 0 .55em fade(#fff, 77%))}
+
+.text-bifurcation {
+    @c: 0 ; // fade(#fff, 0);
+    @p: 0;
+    @value:
+        (1.2 *  @p) (0.8 *  @p) @c,
+        (1.0 *  @p) (1.3 * -@p) @c,
+        (0.8 * -@p) (1.2 *  @p) @c,
+        (1.4 * -@p) (0.8 * -@p) @c;
+    // text-shadow: @value;
+    & {
+        @c: 6px; // fade(#fff, 100%);
+        @p: 2em;
+        .md.transition(text-shadow 1.1s ease-out, @value);
+    }
+}
 
 // ............................................................
 // Border Transitions
@@ -251,7 +256,11 @@
             rotate    deg, +2 -2 +2 -2 +1 -1 +1 -1  0  0
         );
     });
+    
 }
+    
+.fly-away {.md.transition(transform 1.33s, scale(0) rotate(360deg))}
+
 
 // ............................................................
 // some utility mixins:
