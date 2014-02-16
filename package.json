@@ -1,6 +1,6 @@
 {
   "name": "morphodynamics",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-csscomb": "~2.0.1",
