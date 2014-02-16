@@ -58,6 +58,7 @@
 .hollow-barberpole:hover {
     -webkit-animation: barberpole 1.11s linear infinite;
     animation: barberpole 1.11s linear infinite;
+    background-repeat: repeat;
     -webkit-background-size: 2em 2em;
     background-size: 2em 2em;
     background-image: -webkit-linear-gradient(135deg, rgba(255,255,255,.33) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,.33) 50%, rgba(255,255,255,.33) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0));
@@ -94,6 +95,7 @@
 .barberpole:hover {
     -webkit-animation: barberpole 1.11s linear infinite;
     animation: barberpole 1.11s linear infinite;
+    background-repeat: repeat;
     -webkit-background-size: 2em 2em;
     background-size: 2em 2em;
     background-image: -webkit-linear-gradient(135deg, rgba(255,255,255,.33) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,.33) 50%, rgba(255,255,255,.33) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0));
