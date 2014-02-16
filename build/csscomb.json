@@ -4,6 +4,5 @@
     "combinator-space": [" ", " "],
     "quotes": "double",
     "rule-indent": 4,
-    "stick-brace": " ",
-    "unitless-zero": true
+    "stick-brace": " "
 }

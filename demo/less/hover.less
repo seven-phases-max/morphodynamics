@@ -74,6 +74,9 @@
     }
 }
 
+// this should use `extend` but now that would break the demo generation script
+.hollow-barberpole {.hollow; .barberpole}
+
 // ............................................................
 // Border Transitions
 
@@ -114,7 +117,7 @@
 
 .begin-effects-group(3, "Shadow Transitions");
 
-.glow          {.md.transition(box-shadow .33s, 0 0 .55em fade(#000, 55%))}
+.shadow-glow   {.md.transition(box-shadow .33s, 0 0 .55em fade(#000, 55%))}
 .shadow-outset {.md.transition(box-shadow .33s, .13em .13em .13em fade(#000, 44%))}
 .shadow-inset  {.md.transition(box-shadow .33s, inset .13em .13em .13em fade(#000, 33%))}
 
@@ -124,7 +127,7 @@
 .begin-effects-group(4, "Bubbles");
 
 & {
-    @size: .55em;
+    @size: .65em;
 
     .bubble-top    {.bubble(top)}
     .bubble-right  {.bubble(right)}
@@ -271,14 +274,18 @@
     }
 }
 
-.before-overlay(@pos: none) {
+.before-overlay_ {
     position: relative;
-    &:before{
+    &:before {
         pointer-events: none;
         position: absolute;
         content: '';
-       .move(@pos);
     }
+}
+
+.before-overlay(@pos: none) {
+    &:extend(.before-overlay_ all);
+    &:before {.move(@pos)}
 }
 
 .move(@p) when not(@p = none) {

@@ -8,13 +8,12 @@ module.exports = function (grunt) {
         less: {
             options: {
                 strictMath: true
-                // cleancss: true
             },
             build: {
                 expand:   true,
                 flatten:  true,
                 src:     'demo/less/*.less',
-                dest:    'demo/tmp/',
+                dest:    'demo/css/',
                 ext:     '.css'
             }
         },
@@ -26,19 +25,21 @@ module.exports = function (grunt) {
             build: {
                 expand:   true,
                 flatten:  true,
-                src:     'demo/tmp/*.css',
-                dest:    'demo/tmp/'
+                src:     'demo/css/*.css',
+                dest:    'demo/css/',
+                ext:     '.min.css'
             }
         },
         csscomb: {
-            options: {
-                config:  'build/csscomb.json'
-            },
             build: {
+                options: {
+                    config: 'build/csscomb.json'
+                },
                 expand:   true,
                 flatten:  true,
-                src:     'demo/tmp/*.css',
-                dest:    'demo/tmp/'
+                src:     'demo/css/*.min.css',
+                dest:    'demo/css/',
+                ext:     '.css'
             }
         },
         autoprefixer: {
@@ -48,7 +49,7 @@ module.exports = function (grunt) {
             build: {
                 expand:   true,
                 flatten:  true,
-                src:     'demo/tmp/*.css',
+                src:     'demo/css/*.css',
                 dest:    'demo/css/'
             },
         },
@@ -57,9 +58,6 @@ module.exports = function (grunt) {
                 livereload: true,
             },
             css: {
-                //options: {
-                //    spawn: false
-                //},
                 files: ['demo/less/*.less', 'src/**/*.less'],
                 tasks: ['build']
             }
@@ -74,6 +72,21 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             }
+        },
+        copy: {
+            options: {
+            },
+            ghpages: {
+                expand:   true,
+                cwd:     'demo/',
+                src:     ['**', '!**/~*', '!**/*.less'],
+                dest:    '_gh_pages/',
+                // filter:  'isFile'
+            }
+        },
+        clean: {
+            build: ['demo/css'],
+            ghpages: ['_gh_pages'],
         }
     });
     
@@ -85,12 +98,16 @@ module.exports = function (grunt) {
     ]);
     
     grunt.registerTask('build', [
+        'clean:build',
         'less:build',
         'cssmin:build',
         'csscomb:build',
         'autoprefixer:build'
     ]);
     
-    
-
+    grunt.registerTask('ghpages', [
+        'build',
+        'clean:ghpages', 
+        'copy:ghpages'
+    ]);
 };

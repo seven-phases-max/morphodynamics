@@ -122,6 +122,33 @@
 .text-bifurcation:hover {
     text-shadow: 2.4em 1.6em 6px,2em -2.6em 6px,-1.6em 2.4em 6px,-2.8em -1.6em 6px
 }
+.hollow-barberpole:before {
+    top: .14em;
+    right: .14em;
+    bottom: .14em;
+    left: .14em
+}
+.hollow-barberpole:hover:before {
+    background-color: rgba(255,255,255,.33)
+}
+.hollow-barberpole:before {
+    -webkit-transition: background .33s linear;
+    transition: background .33s linear;
+    border-radius: .25em
+}
+@keyframes barberpole {
+    to {
+        background-position: 2em 0
+    }
+}
+.hollow-barberpole:hover {
+    -webkit-animation: barberpole 1.11s linear infinite;
+    animation: barberpole 1.11s linear infinite;
+    -webkit-background-size: 2em 2em;
+    background-size: 2em 2em;
+    background-image: -webkit-linear-gradient(135deg, rgba(255,255,255,.33) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,.33) 50%, rgba(255,255,255,.33) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0));
+    background-image: linear-gradient(-45deg,rgba(255,255,255,.33) 25%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 50%,rgba(255,255,255,.33) 50%,rgba(255,255,255,.33) 75%,rgba(0,0,0,0) 75%,rgba(0,0,0,0))
+}
 .md-group-2:hover {
     content: "Border Transitions"
 }
@@ -133,13 +160,7 @@
     -webkit-box-shadow: inset 0 0 0 .17em rgba(0,0,0,.2);
     box-shadow: inset 0 0 0 .17em rgba(0,0,0,.2)
 }
-.hollow {
-    position: relative
-}
 .hollow:before {
-    pointer-events: none;
-    position: absolute;
-    content: "";
     top: .14em;
     right: .14em;
     bottom: .14em;
@@ -153,13 +174,7 @@
     transition: background .33s linear;
     border-radius: .25em
 }
-.outline-outward {
-    position: relative
-}
 .outline-outward:before {
-    pointer-events: none;
-    position: absolute;
-    content: "";
     top: -1px;
     right: -1px;
     bottom: -1px;
@@ -182,13 +197,7 @@
     border-radius: inherit;
     opacity: 0
 }
-.outline-inward {
-    position: relative
-}
 .outline-inward:before {
-    pointer-events: none;
-    position: absolute;
-    content: "";
     top: -1.1em;
     right: -1.1em;
     bottom: -1.1em;
@@ -221,11 +230,11 @@
 .md-group-3:hover {
     content: "Shadow Transitions"
 }
-.glow {
+.shadow-glow {
     -webkit-transition: -webkit-box-shadow .33s;
     transition: box-shadow .33s
 }
-.glow:hover {
+.shadow-glow:hover {
     -webkit-box-shadow: 0 0 .55em rgba(0,0,0,.55);
     box-shadow: 0 0 .55em rgba(0,0,0,.55)
 }
@@ -248,209 +257,153 @@
 .md-group-4:hover {
     content: "Bubbles"
 }
-.bubble-top {
-    position: relative
-}
-.bubble-top:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-top:hover:before {
-    top: -.55em
+    top: -.65em
 }
 .bubble-top:before {
     z-index: -1;
     -webkit-transition: top .44s;
     transition: top .44s;
     top: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-top-width: 0;
-    left: -webkit-calc(50% - .55em);
-    left: calc(50% - .55em);
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em);
     border-bottom-color: inherit
 }
-.bubble-right {
-    position: relative
-}
-.bubble-right:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-right:hover:before {
-    right: -.55em
+    right: -.65em
 }
 .bubble-right:before {
     z-index: -1;
     -webkit-transition: right .44s;
     transition: right .44s;
     right: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-right-width: 0;
-    top: -webkit-calc(50% - .55em);
-    top: calc(50% - .55em);
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em);
     border-left-color: inherit
 }
-.bubble-bottom {
-    position: relative
-}
-.bubble-bottom:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-bottom:hover:before {
-    bottom: -.55em
+    bottom: -.65em
 }
 .bubble-bottom:before {
     z-index: -1;
     -webkit-transition: bottom .44s;
     transition: bottom .44s;
     bottom: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-bottom-width: 0;
-    left: -webkit-calc(50% - .55em);
-    left: calc(50% - .55em);
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em);
     border-top-color: inherit
 }
-.bubble-left {
-    position: relative
-}
-.bubble-left:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-left:hover:before {
-    left: -.55em
+    left: -.65em
 }
 .bubble-left:before {
     z-index: -1;
     -webkit-transition: left .44s;
     transition: left .44s;
     left: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-left-width: 0;
-    top: -webkit-calc(50% - .55em);
-    top: calc(50% - .55em);
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em);
     border-right-color: inherit
 }
 .bubble-float-top {
-    position: relative;
     -webkit-transition: -webkit-transform .44s;
     transition: transform .44s
 }
-.bubble-float-top:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-float-top:hover:before {
-    top: -.55em
+    top: -.65em
 }
 .bubble-float-top:before {
     z-index: -1;
     -webkit-transition: top .44s;
     transition: top .44s;
     top: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-top-width: 0;
-    left: -webkit-calc(50% - .55em);
-    left: calc(50% - .55em);
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em);
     border-bottom-color: inherit
 }
 .bubble-float-top:hover {
-    -webkit-transform: translateY(0.275em);
-    -ms-transform: translateY(0.275em);
-    transform: translateY(0.275em)
+    -webkit-transform: translateY(0.325em);
+    -ms-transform: translateY(0.325em);
+    transform: translateY(0.325em)
 }
 .bubble-float-right {
-    position: relative;
     -webkit-transition: -webkit-transform .44s;
     transition: transform .44s
 }
-.bubble-float-right:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-float-right:hover:before {
-    right: -.55em
+    right: -.65em
 }
 .bubble-float-right:before {
     z-index: -1;
     -webkit-transition: right .44s;
     transition: right .44s;
     right: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-right-width: 0;
-    top: -webkit-calc(50% - .55em);
-    top: calc(50% - .55em);
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em);
     border-left-color: inherit
 }
 .bubble-float-right:hover {
-    -webkit-transform: translateX(-.275em);
-    -ms-transform: translateX(-.275em);
-    transform: translateX(-.275em)
+    -webkit-transform: translateX(-.325em);
+    -ms-transform: translateX(-.325em);
+    transform: translateX(-.325em)
 }
 .bubble-float-bottom {
-    position: relative;
     -webkit-transition: -webkit-transform .44s;
     transition: transform .44s
 }
-.bubble-float-bottom:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-float-bottom:hover:before {
-    bottom: -.55em
+    bottom: -.65em
 }
 .bubble-float-bottom:before {
     z-index: -1;
     -webkit-transition: bottom .44s;
     transition: bottom .44s;
     bottom: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-bottom-width: 0;
-    left: -webkit-calc(50% - .55em);
-    left: calc(50% - .55em);
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em);
     border-top-color: inherit
 }
 .bubble-float-bottom:hover {
-    -webkit-transform: translateY(-.275em);
-    -ms-transform: translateY(-.275em);
-    transform: translateY(-.275em)
+    -webkit-transform: translateY(-.325em);
+    -ms-transform: translateY(-.325em);
+    transform: translateY(-.325em)
 }
 .bubble-float-left {
-    position: relative;
     -webkit-transition: -webkit-transform .44s;
     transition: transform .44s
 }
-.bubble-float-left:before {
-    pointer-events: none;
-    position: absolute;
-    content: ""
-}
 .bubble-float-left:hover:before {
-    left: -.55em
+    left: -.65em
 }
 .bubble-float-left:before {
     z-index: -1;
     -webkit-transition: left .44s;
     transition: left .44s;
     left: 0;
-    border: .55em solid transparent;
+    border: .65em solid transparent;
     border-left-width: 0;
-    top: -webkit-calc(50% - .55em);
-    top: calc(50% - .55em);
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em);
     border-right-color: inherit
 }
 .bubble-float-left:hover {
-    -webkit-transform: translateX(0.275em);
-    -ms-transform: translateX(0.275em);
-    transform: translateX(0.275em)
+    -webkit-transform: translateX(0.325em);
+    -ms-transform: translateX(0.325em);
+    transform: translateX(0.325em)
 }
 .md-group-5:hover {
     content: "2D Transforms"
@@ -1156,6 +1109,14 @@
     -webkit-transform: scale(0) rotate(360deg);
     -ms-transform: scale(0) rotate(360deg);
     transform: scale(0) rotate(360deg)
+}
+.before-overlay_,.bubble-bottom,.bubble-float-bottom,.bubble-float-left,.bubble-float-right,.bubble-float-top,.bubble-left,.bubble-right,.bubble-top,.hollow,.hollow-barberpole,.outline-inward,.outline-outward {
+    position: relative
+}
+.before-overlay_:before,.bubble-bottom:before,.bubble-float-bottom:before,.bubble-float-left:before,.bubble-float-right:before,.bubble-float-top:before,.bubble-left:before,.bubble-right:before,.bubble-top:before,.hollow-barberpole:before,.hollow:before,.outline-inward:before,.outline-outward:before {
+    pointer-events: none;
+    position: absolute;
+    content: ""
 }
 .aliasing-workaround_,.buzz,.buzz-out,.float,.grow,.grow-rotate,.pop,.pulse,.pulse-grow,.pulse-shrink,.push,.rotate,.shrink,.sink,.skew,.skew-backward,.skew-forward,.wobble-bottom-right,.wobble-horizontal,.wobble-scew,.wobble-scew-bottom,.wobble-scew-top,.wobble-top-right,.wobble-vertical {
     -webkit-transform: translateZ(0);
