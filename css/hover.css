@@ -2,44 +2,24 @@
     content: "Background"
 }
 .lighten {
-    position: relative
+    -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(255,255,255,0);
+    box-shadow: inset 0 0 .5em 2.5em rgba(255,255,255,0);
+    -webkit-transition: -webkit-box-shadow .66s;
+    transition: box-shadow .66s
 }
-.lighten:before {
-    pointer-events: none;
-    position: absolute;
-    content: "";
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    left: -1px
-}
-.lighten:hover:before {
-    background-color: rgba(255,255,255,.33)
-}
-.lighten:before {
-    -webkit-transition: background .33s linear;
-    transition: background .33s linear;
-    border-radius: inherit
+.lighten:hover {
+    -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(255,255,255,.33);
+    box-shadow: inset 0 0 .5em 2.5em rgba(255,255,255,.33)
 }
 .darken {
-    position: relative
+    -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,0);
+    box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,0);
+    -webkit-transition: -webkit-box-shadow .66s;
+    transition: box-shadow .66s
 }
-.darken:before {
-    pointer-events: none;
-    position: absolute;
-    content: "";
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    left: -1px
-}
-.darken:hover:before {
-    background-color: rgba(0,0,0,.16)
-}
-.darken:before {
-    -webkit-transition: background .33s linear;
-    transition: background .33s linear;
-    border-radius: inherit
+.darken:hover {
+    -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,.16);
+    box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,.16)
 }
 @-webkit-keyframes barberpole {
     to {
@@ -128,19 +108,19 @@
     -webkit-animation: text-blur .66s forwards;
     animation: text-blur .66s forwards
 }
-@-webkit-keyframes text-glow {
-    to {
-        text-shadow: 0 0 .55em rgba(255,255,255,.77)
-    }
-}
-@keyframes text-glow {
-    to {
-        text-shadow: 0 0 .55em rgba(255,255,255,.77)
-    }
+.text-glow {
+    -webkit-transition: text-shadow .33s;
+    transition: text-shadow .33s
 }
 .text-glow:hover {
-    -webkit-animation: text-glow .33s linear forwards;
-    animation: text-glow .33s linear forwards
+    text-shadow: 0 0 .55em rgba(255,255,255,.77)
+}
+.text-bifurcation {
+    -webkit-transition: text-shadow 1.1s ease-out;
+    transition: text-shadow 1.1s ease-out
+}
+.text-bifurcation:hover {
+    text-shadow: 2.4em 1.6em 6px,2em -2.6em 6px,-1.6em 2.4em 6px,-2.8em -1.6em 6px
 }
 .md-group-2:hover {
     content: "Border Transitions"
@@ -1167,6 +1147,15 @@
 .buzz-out:hover {
     -webkit-animation: buzz-out .77s linear;
     animation: buzz-out .77s linear
+}
+.fly-away {
+    -webkit-transition: -webkit-transform 1.33s;
+    transition: transform 1.33s
+}
+.fly-away:hover {
+    -webkit-transform: scale(0) rotate(360deg);
+    -ms-transform: scale(0) rotate(360deg);
+    transform: scale(0) rotate(360deg)
 }
 .aliasing-workaround_,.buzz,.buzz-out,.float,.grow,.grow-rotate,.pop,.pulse,.pulse-grow,.pulse-shrink,.push,.rotate,.shrink,.sink,.skew,.skew-backward,.skew-forward,.wobble-bottom-right,.wobble-horizontal,.wobble-scew,.wobble-scew-bottom,.wobble-scew-top,.wobble-top-right,.wobble-vertical {
     -webkit-transform: translateZ(0);
