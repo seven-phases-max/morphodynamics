@@ -12,42 +12,9 @@
 }
 
 // ............................................................
-// Background
-
-.begin-effects-group(0, "Background");
-
-.lighten {.shadow-overlay(#fff, 33%)}
-.darken  {.shadow-overlay(#000, 16%)}
-
-.shadow-overlay(@color, @alpha) {
-    @value: inset 0 0 .5em 2.5em;
-    box-shadow: @value fade(@color, 0);
-    .md.transition(box-shadow .66s, @value  fade(@color, @alpha));
-}
-
-.barberpole {
-    @0: fade(#fff, 33%);
-    @1: fade(#000,  0%);
-    @size: 2em;
-    .md.animation(barberpole 1.11s linear infinite, {
-        to {background-position: @size 0}
-    }, {
-        background-size: @size @size;
-        background-image: linear-gradient(-45deg,
-            @0 25%, @1 25%, @1 50%, @0 50%, @0 75%, @1 75%, @1);
-    });
-}
-
-.md.class(color-spin 5.5s linear alternate infinite, {
-    .frame-iteration(7); .-(@advance) {
-        background-color: spin(#6C9, (360 * @advance));
-    }
-});
-
-// ............................................................
 // Miscellaneous
 
-.begin-effects-group(1, "Miscellaneous");
+.begin-effects-group(0, "Miscellaneous");
 
 .md.class(text-blur .66s forwards, {
     to {
@@ -76,6 +43,39 @@
 
 // this should use `extend` but now that would break the demo generation script
 .hollow-barberpole {.hollow; .barberpole}
+
+// ............................................................
+// Background
+
+.begin-effects-group(1, "Background");
+
+.lighten {.shadow-overlay(#fff, 33%)}
+.darken  {.shadow-overlay(#000, 16%)}
+
+.shadow-overlay(@color, @alpha) {
+    @value: inset 0 0 .5em 2.5em;
+    box-shadow: @value fade(#000, 0);
+    .md.transition(box-shadow .66s, @value fade(@color, @alpha));
+}
+
+.barberpole {
+    @0: fade(#fff, 33%);
+    @1: fade(#000,  0%);
+    @size: 2em;
+    .md.animation(barberpole 1.11s linear infinite, {
+        to {background-position: @size 0}
+    }, {
+        background-size: @size @size;
+        background-image: linear-gradient(-45deg,
+            @0 25%, @1 25%, @1 50%, @0 50%, @0 75%, @1 75%, @1);
+    });
+}
+
+.md.class(color-spin 5.5s linear alternate infinite, {
+    .frame-iteration(7); .-(@advance) {
+        background-color: spin(#6C9, (360 * @advance));
+    }
+});
 
 // ............................................................
 // Border Transitions
@@ -122,60 +122,9 @@
 .shadow-inset  {.md.transition(box-shadow .33s, inset .13em .13em .13em fade(#000, 33%))}
 
 // ............................................................
-// Bubbles
-
-.begin-effects-group(4, "Bubbles");
-
-& {
-    @size: .65em;
-
-    .bubble-top    {.bubble(top)}
-    .bubble-right  {.bubble(right)}
-    .bubble-bottom {.bubble(bottom)}
-    .bubble-left   {.bubble(left)}
-    
-    .bubble-float-top {
-        .bubble(top);
-        .md.transition(transform .44s, translateY((@size / +2)))
-    }
-
-    .bubble-float-right {
-        .bubble(right);
-        .md.transition(transform .44s, translateX((@size / -2)))
-    }
-
-    .bubble-float-bottom {
-        .bubble(bottom);
-        .md.transition(transform .44s, translateY((@size / -2)))
-    }
-
-    .bubble-float-left {
-        .bubble(left);
-        .md.transition(transform .44s, translateX((@size / +2)))
-    }
-
-    .bubble(@side) {
-        .before-overlay();
-        &:hover:before {@{side}: -@size;}
-        &:before {
-            z-index: -1;
-            transition: @side .44s;
-            @{side}: 0;
-            border: @size solid transparent;
-            border-@{side}-width: 0;
-            .-(@side);
-            .-(top)    {left: calc(50% - @size); border-bottom-color: inherit}
-            .-(right)  {top:  calc(50% - @size); border-left-color:   inherit}
-            .-(bottom) {left: calc(50% - @size); border-top-color:    inherit}
-            .-(left)   {top:  calc(50% - @size); border-right-color:  inherit}
-        }
-    }
-}
-
-// ............................................................
 // 2D Transforms
 
-.begin-effects-group(5, "2D Transforms");
+.begin-effects-group(4, "2D Transforms");
 
 & {
 
@@ -264,6 +213,63 @@
     
 .fly-away {.md.transition(transform 1.33s, scale(0) rotate(360deg))}
 
+// ............................................................
+// Bubbles
+
+.begin-effects-group(5, "Bubbles");
+
+& {
+    @size: .65em;
+
+    .bubble-top    {.bubble(top)}
+    .bubble-right  {.bubble(right)}
+    .bubble-bottom {.bubble(bottom)}
+    .bubble-left   {.bubble(left)}
+    
+    .bubble-float-top {
+        .bubble(top);
+        .md.transition(transform .44s, translateY((@size / +2)))
+    }
+
+    .bubble-float-right {
+        .bubble(right);
+        .md.transition(transform .44s, translateX((@size / -2)))
+    }
+
+    .bubble-float-bottom {
+        .bubble(bottom);
+        .md.transition(transform .44s, translateY((@size / -2)))
+    }
+
+    .bubble-float-left {
+        .bubble(left);
+        .md.transition(transform .44s, translateX((@size / +2)))
+    }
+
+    .bubble(@side) {
+        .before-overlay();
+        &:hover:before {
+            @{side}: -@size;
+            .-(@side);
+            .-(top)    {border-bottom-color: inherit}
+            .-(right)  {border-left-color:   inherit}
+            .-(bottom) {border-top-color:    inherit}
+            .-(left)   {border-right-color:  inherit}
+        }
+        &:before {
+            z-index: -1;
+            transition: @side .44s, border-color .66s;
+            @{side}: 0;
+            border: @size solid transparent;
+            border-@{side}-width: 0;
+            .-(@side);
+            .-(top)    {left: calc(50% - @size)}
+            .-(right)  {top:  calc(50% - @size)}
+            .-(bottom) {left: calc(50% - @size)}
+            .-(left)   {top:  calc(50% - @size)}
+        }
+    }
+}
 
 // ............................................................
 // some utility mixins:

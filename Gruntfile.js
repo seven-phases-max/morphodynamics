@@ -79,14 +79,19 @@ module.exports = function (grunt) {
             ghpages: {
                 expand:   true,
                 cwd:     'demo/',
-                src:     ['**', '!**/~*', '!**/*.less'],
+                src:    ['**', '!**/~*', '!**/*.less'],
                 dest:    '_gh_pages/',
                 // filter:  'isFile'
             }
         },
         clean: {
-            build: ['demo/css'],
-            ghpages: ['_gh_pages'],
+            // options: {'no-write': true},
+            build:   ['demo/css'],
+            ghpages: {
+                expand:   true,
+                cwd:     '_gh_pages/',
+                src:    ['**/*', '!.git']
+            },
         }
     });
     

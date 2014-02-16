@@ -2,12 +2,16 @@
 @grid: 16px;
 
 body {
-    margin: @grid;
-    // width: 800px;
+    padding: (4 * @grid) 0 (3 * @grid) 0;
+}
+
+.sub-header {
+    margin-bottom: @grid;    
 }
 
 .btn {
-    margin: @grid 0 (@grid / 2) @grid;
+    margin-right:  @grid;
+    margin-bottom: @grid;
     min-width: 6em;
 }
 

@@ -1,9 +1,74 @@
 .md-group-0:hover {
+    content: "Miscellaneous"
+}
+@-webkit-keyframes text-blur {
+    to {
+        color: transparent;
+        text-shadow: 0 0 .66em #fff
+    }
+}
+@keyframes text-blur {
+    to {
+        color: transparent;
+        text-shadow: 0 0 .66em #fff
+    }
+}
+.text-blur:hover {
+    -webkit-animation: text-blur .66s forwards;
+    animation: text-blur .66s forwards
+}
+.text-glow {
+    -webkit-transition: text-shadow .33s;
+    transition: text-shadow .33s
+}
+.text-glow:hover {
+    text-shadow: 0 0 .55em rgba(255,255,255,.77)
+}
+.text-bifurcation {
+    -webkit-transition: text-shadow 1.1s ease-out;
+    transition: text-shadow 1.1s ease-out
+}
+.text-bifurcation:hover {
+    text-shadow: 2.4em 1.6em 6px,2em -2.6em 6px,-1.6em 2.4em 6px,-2.8em -1.6em 6px
+}
+.hollow-barberpole:before {
+    top: .14em;
+    right: .14em;
+    bottom: .14em;
+    left: .14em
+}
+.hollow-barberpole:hover:before {
+    background-color: rgba(255,255,255,.33)
+}
+.hollow-barberpole:before {
+    -webkit-transition: background .33s linear;
+    transition: background .33s linear;
+    border-radius: .25em
+}
+@-webkit-keyframes barberpole {
+    to {
+        background-position: 2em 0
+    }
+}
+@keyframes barberpole {
+    to {
+        background-position: 2em 0
+    }
+}
+.hollow-barberpole:hover {
+    -webkit-animation: barberpole 1.11s linear infinite;
+    animation: barberpole 1.11s linear infinite;
+    -webkit-background-size: 2em 2em;
+    background-size: 2em 2em;
+    background-image: -webkit-linear-gradient(135deg, rgba(255,255,255,.33) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,.33) 50%, rgba(255,255,255,.33) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0));
+    background-image: linear-gradient(-45deg,rgba(255,255,255,.33) 25%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 50%,rgba(255,255,255,.33) 50%,rgba(255,255,255,.33) 75%,rgba(0,0,0,0) 75%,rgba(0,0,0,0))
+}
+.md-group-1:hover {
     content: "Background"
 }
 .lighten {
-    -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(255,255,255,0);
-    box-shadow: inset 0 0 .5em 2.5em rgba(255,255,255,0);
+    -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,0);
+    box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,0);
     -webkit-transition: -webkit-box-shadow .66s;
     transition: box-shadow .66s
 }
@@ -20,11 +85,6 @@
 .darken:hover {
     -webkit-box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,.16);
     box-shadow: inset 0 0 .5em 2.5em rgba(0,0,0,.16)
-}
-@-webkit-keyframes barberpole {
-    to {
-        background-position: 2em 0
-    }
 }
 @keyframes barberpole {
     to {
@@ -88,66 +148,6 @@
 .color-spin:hover {
     -webkit-animation: color-spin 5.5s linear alternate infinite;
     animation: color-spin 5.5s linear alternate infinite
-}
-.md-group-1:hover {
-    content: "Miscellaneous"
-}
-@-webkit-keyframes text-blur {
-    to {
-        color: transparent;
-        text-shadow: 0 0 .66em #fff
-    }
-}
-@keyframes text-blur {
-    to {
-        color: transparent;
-        text-shadow: 0 0 .66em #fff
-    }
-}
-.text-blur:hover {
-    -webkit-animation: text-blur .66s forwards;
-    animation: text-blur .66s forwards
-}
-.text-glow {
-    -webkit-transition: text-shadow .33s;
-    transition: text-shadow .33s
-}
-.text-glow:hover {
-    text-shadow: 0 0 .55em rgba(255,255,255,.77)
-}
-.text-bifurcation {
-    -webkit-transition: text-shadow 1.1s ease-out;
-    transition: text-shadow 1.1s ease-out
-}
-.text-bifurcation:hover {
-    text-shadow: 2.4em 1.6em 6px,2em -2.6em 6px,-1.6em 2.4em 6px,-2.8em -1.6em 6px
-}
-.hollow-barberpole:before {
-    top: .14em;
-    right: .14em;
-    bottom: .14em;
-    left: .14em
-}
-.hollow-barberpole:hover:before {
-    background-color: rgba(255,255,255,.33)
-}
-.hollow-barberpole:before {
-    -webkit-transition: background .33s linear;
-    transition: background .33s linear;
-    border-radius: .25em
-}
-@keyframes barberpole {
-    to {
-        background-position: 2em 0
-    }
-}
-.hollow-barberpole:hover {
-    -webkit-animation: barberpole 1.11s linear infinite;
-    animation: barberpole 1.11s linear infinite;
-    -webkit-background-size: 2em 2em;
-    background-size: 2em 2em;
-    background-image: -webkit-linear-gradient(135deg, rgba(255,255,255,.33) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,.33) 50%, rgba(255,255,255,.33) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0));
-    background-image: linear-gradient(-45deg,rgba(255,255,255,.33) 25%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 50%,rgba(255,255,255,.33) 50%,rgba(255,255,255,.33) 75%,rgba(0,0,0,0) 75%,rgba(0,0,0,0))
 }
 .md-group-2:hover {
     content: "Border Transitions"
@@ -255,157 +255,6 @@
     box-shadow: inset .13em .13em .13em rgba(0,0,0,.33)
 }
 .md-group-4:hover {
-    content: "Bubbles"
-}
-.bubble-top:hover:before {
-    top: -.65em
-}
-.bubble-top:before {
-    z-index: -1;
-    -webkit-transition: top .44s;
-    transition: top .44s;
-    top: 0;
-    border: .65em solid transparent;
-    border-top-width: 0;
-    left: -webkit-calc(50% - .65em);
-    left: calc(50% - .65em);
-    border-bottom-color: inherit
-}
-.bubble-right:hover:before {
-    right: -.65em
-}
-.bubble-right:before {
-    z-index: -1;
-    -webkit-transition: right .44s;
-    transition: right .44s;
-    right: 0;
-    border: .65em solid transparent;
-    border-right-width: 0;
-    top: -webkit-calc(50% - .65em);
-    top: calc(50% - .65em);
-    border-left-color: inherit
-}
-.bubble-bottom:hover:before {
-    bottom: -.65em
-}
-.bubble-bottom:before {
-    z-index: -1;
-    -webkit-transition: bottom .44s;
-    transition: bottom .44s;
-    bottom: 0;
-    border: .65em solid transparent;
-    border-bottom-width: 0;
-    left: -webkit-calc(50% - .65em);
-    left: calc(50% - .65em);
-    border-top-color: inherit
-}
-.bubble-left:hover:before {
-    left: -.65em
-}
-.bubble-left:before {
-    z-index: -1;
-    -webkit-transition: left .44s;
-    transition: left .44s;
-    left: 0;
-    border: .65em solid transparent;
-    border-left-width: 0;
-    top: -webkit-calc(50% - .65em);
-    top: calc(50% - .65em);
-    border-right-color: inherit
-}
-.bubble-float-top {
-    -webkit-transition: -webkit-transform .44s;
-    transition: transform .44s
-}
-.bubble-float-top:hover:before {
-    top: -.65em
-}
-.bubble-float-top:before {
-    z-index: -1;
-    -webkit-transition: top .44s;
-    transition: top .44s;
-    top: 0;
-    border: .65em solid transparent;
-    border-top-width: 0;
-    left: -webkit-calc(50% - .65em);
-    left: calc(50% - .65em);
-    border-bottom-color: inherit
-}
-.bubble-float-top:hover {
-    -webkit-transform: translateY(0.325em);
-    -ms-transform: translateY(0.325em);
-    transform: translateY(0.325em)
-}
-.bubble-float-right {
-    -webkit-transition: -webkit-transform .44s;
-    transition: transform .44s
-}
-.bubble-float-right:hover:before {
-    right: -.65em
-}
-.bubble-float-right:before {
-    z-index: -1;
-    -webkit-transition: right .44s;
-    transition: right .44s;
-    right: 0;
-    border: .65em solid transparent;
-    border-right-width: 0;
-    top: -webkit-calc(50% - .65em);
-    top: calc(50% - .65em);
-    border-left-color: inherit
-}
-.bubble-float-right:hover {
-    -webkit-transform: translateX(-.325em);
-    -ms-transform: translateX(-.325em);
-    transform: translateX(-.325em)
-}
-.bubble-float-bottom {
-    -webkit-transition: -webkit-transform .44s;
-    transition: transform .44s
-}
-.bubble-float-bottom:hover:before {
-    bottom: -.65em
-}
-.bubble-float-bottom:before {
-    z-index: -1;
-    -webkit-transition: bottom .44s;
-    transition: bottom .44s;
-    bottom: 0;
-    border: .65em solid transparent;
-    border-bottom-width: 0;
-    left: -webkit-calc(50% - .65em);
-    left: calc(50% - .65em);
-    border-top-color: inherit
-}
-.bubble-float-bottom:hover {
-    -webkit-transform: translateY(-.325em);
-    -ms-transform: translateY(-.325em);
-    transform: translateY(-.325em)
-}
-.bubble-float-left {
-    -webkit-transition: -webkit-transform .44s;
-    transition: transform .44s
-}
-.bubble-float-left:hover:before {
-    left: -.65em
-}
-.bubble-float-left:before {
-    z-index: -1;
-    -webkit-transition: left .44s;
-    transition: left .44s;
-    left: 0;
-    border: .65em solid transparent;
-    border-left-width: 0;
-    top: -webkit-calc(50% - .65em);
-    top: calc(50% - .65em);
-    border-right-color: inherit
-}
-.bubble-float-left:hover {
-    -webkit-transform: translateX(0.325em);
-    -ms-transform: translateX(0.325em);
-    transform: translateX(0.325em)
-}
-.md-group-5:hover {
     content: "2D Transforms"
 }
 .grow {
@@ -1109,6 +958,157 @@
     -webkit-transform: scale(0) rotate(360deg);
     -ms-transform: scale(0) rotate(360deg);
     transform: scale(0) rotate(360deg)
+}
+.md-group-5:hover {
+    content: "Bubbles"
+}
+.bubble-top:hover:before {
+    top: -.65em;
+    border-bottom-color: inherit
+}
+.bubble-top:before {
+    z-index: -1;
+    -webkit-transition: top .44s,border-color .66s;
+    transition: top .44s,border-color .66s;
+    top: 0;
+    border: .65em solid transparent;
+    border-top-width: 0;
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em)
+}
+.bubble-right:hover:before {
+    right: -.65em;
+    border-left-color: inherit
+}
+.bubble-right:before {
+    z-index: -1;
+    -webkit-transition: right .44s,border-color .66s;
+    transition: right .44s,border-color .66s;
+    right: 0;
+    border: .65em solid transparent;
+    border-right-width: 0;
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em)
+}
+.bubble-bottom:hover:before {
+    bottom: -.65em;
+    border-top-color: inherit
+}
+.bubble-bottom:before {
+    z-index: -1;
+    -webkit-transition: bottom .44s,border-color .66s;
+    transition: bottom .44s,border-color .66s;
+    bottom: 0;
+    border: .65em solid transparent;
+    border-bottom-width: 0;
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em)
+}
+.bubble-left:hover:before {
+    left: -.65em;
+    border-right-color: inherit
+}
+.bubble-left:before {
+    z-index: -1;
+    -webkit-transition: left .44s,border-color .66s;
+    transition: left .44s,border-color .66s;
+    left: 0;
+    border: .65em solid transparent;
+    border-left-width: 0;
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em)
+}
+.bubble-float-top {
+    -webkit-transition: -webkit-transform .44s;
+    transition: transform .44s
+}
+.bubble-float-top:hover:before {
+    top: -.65em;
+    border-bottom-color: inherit
+}
+.bubble-float-top:before {
+    z-index: -1;
+    -webkit-transition: top .44s,border-color .66s;
+    transition: top .44s,border-color .66s;
+    top: 0;
+    border: .65em solid transparent;
+    border-top-width: 0;
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em)
+}
+.bubble-float-top:hover {
+    -webkit-transform: translateY(0.325em);
+    -ms-transform: translateY(0.325em);
+    transform: translateY(0.325em)
+}
+.bubble-float-right {
+    -webkit-transition: -webkit-transform .44s;
+    transition: transform .44s
+}
+.bubble-float-right:hover:before {
+    right: -.65em;
+    border-left-color: inherit
+}
+.bubble-float-right:before {
+    z-index: -1;
+    -webkit-transition: right .44s,border-color .66s;
+    transition: right .44s,border-color .66s;
+    right: 0;
+    border: .65em solid transparent;
+    border-right-width: 0;
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em)
+}
+.bubble-float-right:hover {
+    -webkit-transform: translateX(-.325em);
+    -ms-transform: translateX(-.325em);
+    transform: translateX(-.325em)
+}
+.bubble-float-bottom {
+    -webkit-transition: -webkit-transform .44s;
+    transition: transform .44s
+}
+.bubble-float-bottom:hover:before {
+    bottom: -.65em;
+    border-top-color: inherit
+}
+.bubble-float-bottom:before {
+    z-index: -1;
+    -webkit-transition: bottom .44s,border-color .66s;
+    transition: bottom .44s,border-color .66s;
+    bottom: 0;
+    border: .65em solid transparent;
+    border-bottom-width: 0;
+    left: -webkit-calc(50% - .65em);
+    left: calc(50% - .65em)
+}
+.bubble-float-bottom:hover {
+    -webkit-transform: translateY(-.325em);
+    -ms-transform: translateY(-.325em);
+    transform: translateY(-.325em)
+}
+.bubble-float-left {
+    -webkit-transition: -webkit-transform .44s;
+    transition: transform .44s
+}
+.bubble-float-left:hover:before {
+    left: -.65em;
+    border-right-color: inherit
+}
+.bubble-float-left:before {
+    z-index: -1;
+    -webkit-transition: left .44s,border-color .66s;
+    transition: left .44s,border-color .66s;
+    left: 0;
+    border: .65em solid transparent;
+    border-left-width: 0;
+    top: -webkit-calc(50% - .65em);
+    top: calc(50% - .65em)
+}
+.bubble-float-left:hover {
+    -webkit-transform: translateX(0.325em);
+    -ms-transform: translateX(0.325em);
+    transform: translateX(0.325em)
 }
 .before-overlay_,.bubble-bottom,.bubble-float-bottom,.bubble-float-left,.bubble-float-right,.bubble-float-top,.bubble-left,.bubble-right,.bubble-top,.hollow,.hollow-barberpole,.outline-inward,.outline-outward {
     position: relative
