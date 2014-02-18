@@ -5,6 +5,7 @@ $(function(){
         ["Amelia",   "//bootswatch.com/amelia/bootstrap.min.css"],
         ["Cerulean", "//bootswatch.com/cerulean/bootstrap.min.css"],
         ["Cosmo",    "//bootswatch.com/cosmo/bootstrap.min.css"],
+        ["Cupid",    "//bootswatch.com/cupid/bootstrap.min.css"],
         ["Cyborg",   "//bootswatch.com/cyborg/bootstrap.min.css"],
         ["Flatly",   "//bootswatch.com/flatly/bootstrap.min.css"],
         ["Journal",  "//bootswatch.com/journal/bootstrap.min.css"],
@@ -37,6 +38,8 @@ $(function(){
 
 $(document).ready(generateButtons);
 
+var element_;
+
 function generateButtons() {
     var i = 0, sheet, sheets = document.styleSheets;
     while ((sheet = sheets[i++]) && ('showcase' !== sheet.href.split('?').pop())); // !
@@ -47,7 +50,7 @@ function generateButtons() {
         re = /\.([\w-]+)(:hover)/, selector, prevSelector,
         container = $('#showcase'),
         header    = $('<h3 class="sub-header"></h3>'),
-        button    = $('<button type="button" class="btn btn-lg"></button>'),
+        element   = $(element_ || '<button type="button" class="btn btn-lg"></button>'),
         groupClass = [
             "btn-info",
             "btn-success",
@@ -68,7 +71,7 @@ function generateButtons() {
                 .text(rules[i].style.getPropertyValue('content').replace(/['"]/g, ''));
             j = (j + 1) % groupClass.length;
         } else {
-            button.clone().appendTo(container)
+            element.clone().appendTo(container)
                 .addClass(groupClass[j]).addClass(selector).text(selector);
         }
     }
