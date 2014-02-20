@@ -7,7 +7,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
         less: {
             options: {
-                strictMath: true
+                strictMath: true,
+                // cleancss: true
             },
             build: {
                 expand:   true,
