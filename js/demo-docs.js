@@ -14,6 +14,7 @@ $(function(){
         ["Simplex",  "//bootswatch.com/simplex/bootstrap.min.css"],
         ["Slate",    "//bootswatch.com/slate/bootstrap.min.css"],
         ["Spacelab", "//bootswatch.com/spacelab/bootstrap.min.css"],
+        ["Superhero", "//bootswatch.com/superhero/bootstrap.min.css"],
         ["United",   "//bootswatch.com/united/bootstrap.min.css"],
         ["Yeti",     "//bootswatch.com/yeti/bootstrap.min.css"]
     ];
