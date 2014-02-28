@@ -1,22 +1,22 @@
 
 $(function(){
     var themes = [
-        ["Default",  "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"],
-        ["Amelia",   "//bootswatch.com/amelia/bootstrap.min.css"],
-        ["Cerulean", "//bootswatch.com/cerulean/bootstrap.min.css"],
-        ["Cosmo",    "//bootswatch.com/cosmo/bootstrap.min.css"],
-        ["Cupid",    "//bootswatch.com/cupid/bootstrap.min.css"],
-        ["Cyborg",   "//bootswatch.com/cyborg/bootstrap.min.css"],
-        ["Flatly",   "//bootswatch.com/flatly/bootstrap.min.css"],
-        ["Journal",  "//bootswatch.com/journal/bootstrap.min.css"],
-        ["Lumen",    "//bootswatch.com/lumen/bootstrap.min.css"],
-        ["Readable", "//bootswatch.com/readable/bootstrap.min.css"],
-        ["Simplex",  "//bootswatch.com/simplex/bootstrap.min.css"],
-        ["Slate",    "//bootswatch.com/slate/bootstrap.min.css"],
-        ["Spacelab", "//bootswatch.com/spacelab/bootstrap.min.css"],
+        ["Default",   "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"],
+        ["Amelia",    "//bootswatch.com/amelia/bootstrap.min.css"],
+        ["Cerulean",  "//bootswatch.com/cerulean/bootstrap.min.css"],
+        ["Cosmo",     "//bootswatch.com/cosmo/bootstrap.min.css"],
+        ["Cupid",     "//bootswatch.com/cupid/bootstrap.min.css"],
+        ["Cyborg",    "//bootswatch.com/cyborg/bootstrap.min.css"],
+        ["Flatly",    "//bootswatch.com/flatly/bootstrap.min.css"],
+        ["Journal",   "//bootswatch.com/journal/bootstrap.min.css"],
+        ["Lumen",     "//bootswatch.com/lumen/bootstrap.min.css"],
+        ["Readable",  "//bootswatch.com/readable/bootstrap.min.css"],
+        ["Simplex",   "//bootswatch.com/simplex/bootstrap.min.css"],
+        ["Slate",     "//bootswatch.com/slate/bootstrap.min.css"],
+        ["Spacelab",  "//bootswatch.com/spacelab/bootstrap.min.css"],
         ["Superhero", "//bootswatch.com/superhero/bootstrap.min.css"],
-        ["United",   "//bootswatch.com/united/bootstrap.min.css"],
-        ["Yeti",     "//bootswatch.com/yeti/bootstrap.min.css"]
+        ["United",    "//bootswatch.com/united/bootstrap.min.css"],
+        ["Yeti",      "//bootswatch.com/yeti/bootstrap.min.css"]
     ];
 
     var sheet = $('<link href="' + themes[0][1] + '" rel="stylesheet" />'),
