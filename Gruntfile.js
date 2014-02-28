@@ -99,6 +99,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['build']);
 
     grunt.registerTask('devel', [
+        'build',
         'connect:demo', 
         'watch'
     ]);
