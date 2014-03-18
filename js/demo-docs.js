@@ -7,6 +7,7 @@ $(function(){
         ["Cosmo",     "//bootswatch.com/cosmo/bootstrap.min.css"],
         ["Cupid",     "//bootswatch.com/cupid/bootstrap.min.css"],
         ["Cyborg",    "//bootswatch.com/cyborg/bootstrap.min.css"],
+        ["Darkly",    "//bootswatch.com/darkly/bootstrap.min.css"],
         ["Flatly",    "//bootswatch.com/flatly/bootstrap.min.css"],
         ["Journal",   "//bootswatch.com/journal/bootstrap.min.css"],
         ["Lumen",     "//bootswatch.com/lumen/bootstrap.min.css"],
