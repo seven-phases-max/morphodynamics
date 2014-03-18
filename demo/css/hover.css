@@ -18,11 +18,11 @@
     animation: text-blur .66s forwards
 }
 .text-glow {
-    -webkit-transition: text-shadow .33s;
-    transition: text-shadow .33s
+    -webkit-transition: text-shadow .66s;
+    transition: text-shadow .66s
 }
 .text-glow:hover {
-    text-shadow: 0 0 .55em rgba(255,255,255,.77)
+    text-shadow: 0 0 .66em rgba(255,255,255,.99)
 }
 .text-bifurcation {
     -webkit-transition: text-shadow 1.1s ease-out;
