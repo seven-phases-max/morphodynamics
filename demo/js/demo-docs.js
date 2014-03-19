@@ -5,7 +5,7 @@ $(function(){
         ["Amelia",    "//bootswatch.com/amelia/bootstrap.min.css"],
         ["Cerulean",  "//bootswatch.com/cerulean/bootstrap.min.css"],
         ["Cosmo",     "//bootswatch.com/cosmo/bootstrap.min.css"],
-        ["Cupid",     "//bootswatch.com/cupid/bootstrap.min.css"],
+        // ["Cupid",     "//bootswatch.com/cupid/bootstrap.min.css"],
         ["Cyborg",    "//bootswatch.com/cyborg/bootstrap.min.css"],
         ["Darkly",    "//bootswatch.com/darkly/bootstrap.min.css"],
         ["Flatly",    "//bootswatch.com/flatly/bootstrap.min.css"],
