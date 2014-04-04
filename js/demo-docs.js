@@ -12,7 +12,7 @@ $(function(){
         ["Journal",   "//bootswatch.com/journal/bootstrap.min.css"],
         ["Lumen",     "//bootswatch.com/lumen/bootstrap.min.css"],
         ["Readable",  "//bootswatch.com/readable/bootstrap.min.css"],
-        ["Shamrock",  "//bootswatch.com/shamrock/bootstrap.min.css"],
+        // ["Shamrock",  "//bootswatch.com/shamrock/bootstrap.min.css"],
         ["Simplex",   "//bootswatch.com/simplex/bootstrap.min.css"],
         ["Slate",     "//bootswatch.com/slate/bootstrap.min.css"],
         ["Spacelab",  "//bootswatch.com/spacelab/bootstrap.min.css"],
