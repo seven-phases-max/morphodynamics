@@ -5,37 +5,56 @@ $(function(){
         ["Amelia",    "//bootswatch.com/amelia/bootstrap.min.css"],
         ["Cerulean",  "//bootswatch.com/cerulean/bootstrap.min.css"],
         ["Cosmo",     "//bootswatch.com/cosmo/bootstrap.min.css"],
-        // ["Cupid",     "//bootswatch.com/cupid/bootstrap.min.css"],
         ["Cyborg",    "//bootswatch.com/cyborg/bootstrap.min.css"],
         ["Darkly",    "//bootswatch.com/darkly/bootstrap.min.css"],
         ["Flatly",    "//bootswatch.com/flatly/bootstrap.min.css"],
         ["Journal",   "//bootswatch.com/journal/bootstrap.min.css"],
         ["Lumen",     "//bootswatch.com/lumen/bootstrap.min.css"],
         ["Readable",  "//bootswatch.com/readable/bootstrap.min.css"],
-        // ["Shamrock",  "//bootswatch.com/shamrock/bootstrap.min.css"],
+        ["Sandstone", "//bootswatch.com/sandstone/bootstrap.min.css"],
         ["Simplex",   "//bootswatch.com/simplex/bootstrap.min.css"],
         ["Slate",     "//bootswatch.com/slate/bootstrap.min.css"],
+        ["Solar",     "//bootswatch.com/solar/bootstrap.min.css"],
         ["Spacelab",  "//bootswatch.com/spacelab/bootstrap.min.css"],
         ["Superhero", "//bootswatch.com/superhero/bootstrap.min.css"],
         ["United",    "//bootswatch.com/united/bootstrap.min.css"],
-        ["Yeti",      "//bootswatch.com/yeti/bootstrap.min.css"]
+        ["Yeti",      "//bootswatch.com/yeti/bootstrap.min.css"],
+
+        ["CT Material Kit", "//cdn.rawgit.com/creativetimofficial/material-kit/v1.1.0/assets/css/material-kit.css", true],
+        ["CT Paper Kit",    "//cdn.rawgit.com/creativetimofficial/paper-kit/d10ced7c/assets/css/ct-paper.css", true],
+        ["Magister",        "//gettemplate.com/demo/magister/assets/css/magister.css", true]
     ];
 
-    var sheet = $('<link href="' + themes[0][1] + '" rel="stylesheet" />'),
-        list  = $('#theme-list');
-    sheet.prependTo('head');
-    
+    var baseTheme = themes[0][1],
+        sheetBase = $('<link href="' + baseTheme + '" rel="stylesheet" />'),
+        sheetMain = $('<link href="" rel="stylesheet" />'),
+        list      = $('#theme-list');
+    sheetMain.prependTo('head');
+    sheetBase.prependTo('head');
+
+
     if (!list.length)
         return;
-    
-    var i, n = themes.length, name, href;
+
+    var i, n = themes.length, name;
     for (i = 0; i < n; i++) {
         name = themes[i][0];
-        href = themes[i][1];
-        $('<li><a href="#" data-href="' + href + '">' + name + '</a></li>')
-            .appendTo(list).find('a').click(function() {
-                sheet.attr('href', $(this).attr('data-href'));
-            });
+        $('<li><a href="#" data-index="' + i + '">' + name + '</a></li>')
+            .appendTo(list).find('a').click(select);
+    }
+
+    function select() {
+        var theme = themes[Number($(this).attr('data-index'))],
+            base = '',
+            main = theme[1];
+
+        if (theme[2]) {
+            // needs base theme (i.e. `bootstrap.css`):
+            base = baseTheme;
+        }
+
+        sheetBase.attr('href', base);
+        sheetMain.attr('href', main);
     }
 });
 

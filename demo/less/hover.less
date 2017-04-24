@@ -3,7 +3,7 @@
 
 // ............................................................
 
-& { // pseudo-global scope 
+& { // isolate scope
     // (have to use it now to not suffer from #1316, #1877 etc.)
 
 // ............................................................
@@ -73,7 +73,7 @@
         background-repeat: repeat;
         background-size: @size @size;
         background-image: linear-gradient(-45deg,
-            @0 25%, @1 25%, @1 50%, @0 50%, @0 75%, @1 75%, @1);
+            @0 23%, @1 27%, @1 48%, @0 52%, @0 73%, @1 77%, @1);
     });
 }
 
